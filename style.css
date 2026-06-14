@@ -4,8 +4,6 @@ body{
     justify-content: center;
     align-items: center;
     height:100vh;
-    /* background:
-    linear-gradient(135deg,#1f2235,#35385f,#565a8d); */
     background: linear-gradient(135deg,
             #050b1f 0%,
             #0b1f3a 25%,
@@ -19,7 +17,7 @@ button{
     height: 60px;
     margin-right: 10px;
     background-color: rgb(86, 85, 116);
-    transition:.2s ease;
+    transition:.2s;
 }
 button:hover{
     transform:translateY(-3px);
