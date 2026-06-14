@@ -6,7 +6,6 @@ document.querySelector("main").addEventListener("click",(e)=>{
         return;
 
     const value = e.target.dataset.value;
-
     const action = e.target.dataset.action;
 
     if(value){
@@ -35,7 +34,8 @@ document.querySelector("main").addEventListener("click",(e)=>{
 
     if(action === "equal"){
         try{
-            display.value = eval(display.value);
+            const result = eval(display.value);
+            display.value = display.value + "=" + result;
         }
         catch{
             display.value = "Error";
@@ -43,7 +43,7 @@ document.querySelector("main").addEventListener("click",(e)=>{
     }
 
     if(action === "clear"){
-        display.value = "";
+        display.value = display.value.slice(0, -1);
     }
 
     if(action === "clear_all"){
@@ -57,4 +57,18 @@ document.querySelector("main").addEventListener("click",(e)=>{
             );
         }
     }
+});
+document.addEventListener("keydown", (e) => {
+    if(e.key >= "0" && e.key <= "9" || e.key === ".") 
+        display.value += e.key;
+
+    if(e.key === "Enter" || e.key === "=") {
+        const result = eval(display.value);
+        display.value = display.value + "=" + result;
+    }
+    if(e.key === "Backspace") 
+        display.value = display.value.slice(0, -1);
+
+    if(["+","-","*","/","%"].includes(e.key)) 
+        display.value += e.key;
 });
