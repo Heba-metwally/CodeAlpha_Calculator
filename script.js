@@ -37,8 +37,10 @@ function addOperator(operator) {
     if (resultText.innerText === "Error") resetCalculator();
 
     if (calculated) {
-        historyText.innerText = resultText.innerText;
+        historyText.innerText = resultText.innerText + operator;
+        resultText.innerText = "0";
         calculated = false;
+        return;
     }
 
     let lastChar = historyText.innerText.slice(-1);
@@ -105,6 +107,18 @@ document.querySelector(".calculator").addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
+    if (e.key === "/") {
+        e.preventDefault();
+        addOperator("/");
+        return;
+    }
+
+    if (e.key === "Enter" || e.key === "=") {
+        e.preventDefault();
+        if (!calculated) calculateResult();
+        return;
+    }
+
     if ((e.key >= "0" && e.key <= "9") || e.key === ".") {
         if (e.key === "." && resultText.innerText.includes(".")) return;
         if (calculated || resultText.innerText === "Error") resetCalculator();
@@ -115,12 +129,10 @@ document.addEventListener("keydown", (e) => {
         }
     }
 
-    if (e.key === "Enter" || e.key === "=") calculateResult();
-
     if (e.key === "Backspace") {
         resultText.innerText = resultText.innerText.slice(0, -1);
         if (resultText.innerText === "") resultText.innerText = "0";
     }
 
-    if (["+", "-", "*", "/", "%"].includes(e.key)) addOperator(e.key);
+    if (["+", "-", "*", "%"].includes(e.key)) addOperator(e.key);
 });
