@@ -1,5 +1,15 @@
 const display =document.getElementById("display");
 
+function appendToDisplay(value) {
+    const operators = ['+', '-', '*', '/', '%'];
+    const lastChar = display.value.slice(-1);
+    
+    if(operators.includes(lastChar) && operators.includes(value)) return;
+    
+    if(display.value === '' && operators.includes(value) && value !== '-') return;
+    
+    display.value += value;
+}
 document.querySelector("main").addEventListener("click",(e)=>{
 
     if(e.target.tagName !== "BUTTON")
@@ -12,25 +22,11 @@ document.querySelector("main").addEventListener("click",(e)=>{
         display.value += value;
     }
 
-    if(action === "plus"){
-        display.value += "+";
-    }
-
-    if(action === "minus"){
-        display.value += "-";
-    }
-
-    if(action === "multiply"){
-        display.value += "*";
-    }
-
-    if(action === "divide"){
-        display.value += "/";
-    }
-
-    if(action === "modulus"){
-        display.value += "%";
-    }
+    if(action === "plus") appendToDisplay("+");
+    if(action === "minus") appendToDisplay("-");
+    if(action === "multiply") appendToDisplay("*");
+    if(action === "divide") appendToDisplay("/");
+    if(action === "modulus") appendToDisplay("%");
 
     if(action === "equal"){
         try{
@@ -70,5 +66,5 @@ document.addEventListener("keydown", (e) => {
         display.value = display.value.slice(0, -1);
 
     if(["+","-","*","/","%"].includes(e.key)) 
-        display.value += e.key;
+        appendToDisplay(e.key);
 });
