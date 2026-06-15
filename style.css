@@ -1,45 +1,84 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg,
-            #050b1f 0%,
-            #0b1f3a 25%,
-            #123a63 50%,
-            #1b4f8a 75%,
-            #0a0f2e 100%
-            );
+        #050b1f,
+        #0b1f3a,
+        #123a63,
+        #1b4f8a,
+        #0a0f2e
+    );
+    font-family: Arial, Helvetica, sans-serif;
 }
-button{
-    width: 80px;
-    height: 60px;
-    margin-right: 10px;
-    background-color: rgb(86, 85, 116);
-    transition:.2s;
+.calculator {
+    width: 95%;
+    max-width: 420px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.35);
 }
-button:hover{
-    transform:translateY(-3px);
-    background:rgb(120,119,160);
-}
-button:active{
-    transform: scale(.95); 
-}
-button[data-action="equal"]{
-    background: linear-gradient(135deg,#7e154d,#791037);  
-}
-#display{
-    background-color: rgb(108, 106, 134);
-    width: 360px;
-    text-align: center;
+.screen {
+    background: #6c6a86;
+    min-height: 100px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    color: white;
     box-shadow: inset 3px 3px 10px rgba(0,0,0,.3);
 }
-button,#display{
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
+.screen-history {
+    font-size: 16px;
+    color: rgba(255,255,255,.65);
+    min-height: 20px;
+    overflow-x: auto;
+    margin-bottom: 8px;
+}
+.screen-result {
+    font-size: 42px;
+    font-weight: 700;
+    overflow-x: auto;
+}
+.screen-history::-webkit-scrollbar,
+.screen-result::-webkit-scrollbar {
+    display: none;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.buttons-row {
+    display: flex;
+    gap: 10px;
+}
+.button {
+    flex: 1;
     height: 60px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background: #565574;
+    transition: .2s;
+}
+.button:hover {
+    background: #7877a0;
+    transform: translateY(-3px);
+}
+.button:active {
+    transform: scale(.95);
+}
+.button-equal {
+    background: linear-gradient(135deg, #7e154d, #791037);
 }

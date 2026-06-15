@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="icon" type="image/png" sizes="64x64" href="logo.png">
+    <title>Modern Calculator | CodeAlpha Task 2</title>
+    <meta name="description"
+        content="Responsive Calculator built using HTML, CSS and JavaScript">
+    <link rel="icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="calculator">
-    
-    <input type="text" id="display" readonly>
-    <section class="buttons">
-        <div>
-            <button data-action="modulus">%</button>
-            <button data-action="clear_all">CE</button>
-            <button data-action="clear">C</button>
-            <button data-action="multiply">x</button>
-        </div>
-        <div>
-            <button data-value="7">7</button>
-            <button data-value="8">8</button>
-            <button data-value="9">9</button>
-            <button data-action="divide">÷</button>
-    
-        </div>
-        <div>
-            <button data-value="4">4</button>
-            <button data-value="5">5</button>
-            <button data-value="6">6</button>
-            <button data-action="minus">-</button>
-        </div>
-        <div>
-            <button data-value="1">1</button>
-            <button data-value="2">2</button>
-            <button data-value="3">3</button>
-            <button data-action="plus">+</button>
-        </div>
-        <div>
-            <button data-action="sign">+ \ -</button>
-            <button data-value="0">0</button>
-            <button data-value=".">.</button>
-            <button data-action="equal">=</button>
-        </div>
-    </section>
-  </main>
 
+<body>
+    <main class="calculator">
+        <div class="screen">
+            <div class="screen-history"></div>
+            <div class="screen-result">0</div>
+        </div>
+        <div class="buttons">
+            <div class="buttons-row">
+                <button class="button" data-action="modulus">%</button>
+                <button class="button" data-action="clear_all">CE</button>
+                <button class="button" data-action="clear">C</button>
+                <button class="button" data-action="multiply">×</button>
+            </div>
+            <div class="buttons-row">
+                <button class="button" data-value="7">7</button>
+                <button class="button" data-value="8">8</button>
+                <button class="button" data-value="9">9</button>
+                <button class="button" data-action="divide">÷</button>
+            </div>
+            <div class="buttons-row">
+                <button class="button" data-value="4">4</button>
+                <button class="button" data-value="5">5</button>
+                <button class="button" data-value="6">6</button>
+                <button class="button" data-action="minus">−</button>
+            </div>
+            <div class="buttons-row">
+                <button class="button" data-value="1">1</button>
+                <button class="button" data-value="2">2</button>
+                <button class="button" data-value="3">3</button>
+                <button class="button" data-action="plus">+</button>
+            </div>
+            <div class="buttons-row">
+                <button class="button" data-action="sign">±</button>
+                <button class="button" data-value="0">0</button>
+                <button class="button" data-value=".">.</button>
+                <button class="button button-equal" data-action="equal">=</button>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
+
 </body>
 </html>
