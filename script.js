@@ -10,8 +10,9 @@ function resetCalculator() {
 
 function calculateResult() {
     try {
+        if (calculated || resultText.innerText === "Error") return;
         let expression = historyText.innerText + resultText.innerText;
-        if (expression === "" || resultText.innerText === "Error") return;
+        if (expression === "") return;
 
         const lastChar = expression.slice(-1);
         if (["+", "-", "*", "/", "%"].includes(lastChar)) {
@@ -65,6 +66,10 @@ function addOperator(operator) {
     resultText.innerText = "0";
 }
 
+document.querySelector(".calculator").addEventListener("mousedown", (e) => {
+    e.preventDefault();
+});
+
 document.querySelector(".calculator").addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
@@ -107,14 +112,10 @@ document.querySelector(".calculator").addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "/") {
-        e.preventDefault();
-        addOperator("/");
-        return;
-    }
+    const handled = ["Enter", "=", "/", "+", "-", "*", "%", "Backspace", ".","0","1","2","3","4","5","6","7","8","9"];
+    if (handled.includes(e.key)) e.preventDefault();
 
     if (e.key === "Enter" || e.key === "=") {
-        e.preventDefault();
         if (!calculated) calculateResult();
         return;
     }
@@ -134,5 +135,5 @@ document.addEventListener("keydown", (e) => {
         if (resultText.innerText === "") resultText.innerText = "0";
     }
 
-    if (["+", "-", "*", "%"].includes(e.key)) addOperator(e.key);
+    if (["+", "-", "*", "/", "%"].includes(e.key)) addOperator(e.key);
 });
